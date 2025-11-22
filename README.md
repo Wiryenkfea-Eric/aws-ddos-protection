@@ -1,36 +1,36 @@
 # Enterprise-Grade DDoS Protection with Terraform and AWS
 
-**A complete, automated, infrastructure-as-code implementation of DDoS protection on AWS using Terraform.** This project deploys a robust defensive architecture combining CloudFront, AWS WAF, ALB, EC2, SNS alerts, and an emergency-response Lambda that dynamically tightens rate limits during active attacks.  
+*A complete, automated, infrastructure-as-code implementation of DDoS protection on AWS using Terraform.* This project deploys a robust defensive architecture combining CloudFront, AWS WAF, ALB, EC2, SNS alerts, and an emergency-response Lambda that dynamically tightens rate limits during active attacks.  
 
 It serves both as a hands-on learning environment and as a reusable template for production systems.  
 
 ---
 
-## **Architecture Overview**
+## *Architecture Overview*
 <img width="800" height="533" alt="image" src="https://github.com/user-attachments/assets/fccfcab0-24c9-46be-8627-5d38b544b77d" />
-**Figure 1:** High-level architecture of the AWS DDoS protection system  
+*Figure 1:* High-level architecture of the AWS DDoS protection system  
 
 ---
 
-## **What this Project Delivers**
+## *What this Project Delivers*
 
-- **Fully Protected Public Website**
+- *Fully Protected Public Website*
   - Amazon Linux 2023 EC2 instance
   - Automated Apache installation and fully styled demo page
   - Application Load Balancer
   - CloudFront distribution for global caching and DDoS absorption
 
-- **Multi-Layered AWS WAF Protection**
+- *Multi-Layered AWS WAF Protection*
   - Rate-based rule limiting requests per IP
   - AWS Managed Rule Groups (Common Rule Set, Bot Control, Anonymous IP List)
   - Custom bad-bot detection (User-Agent inspection)
 
-- **Monitoring and Alerting**
+- *Monitoring and Alerting*
   - SNS email alerts on abnormal traffic spikes
   - CloudWatch alarms monitoring blocked requests
   - CloudWatch dashboard output for real-time visibility
 
-- **Automated Emergency Response**
+- *Automated Emergency Response*
   - Lambda function automatically reduces WAF rate limit when an attack is detected:
     - CloudWatch alarm fires
     - SNS triggers the Lambda
@@ -39,7 +39,7 @@ It serves both as a hands-on learning environment and as a reusable template for
 
 ---
 
-## **Prerequisites**
+## *Prerequisites*
 
 Before deploying, ensure you have:
 
@@ -51,7 +51,7 @@ Before deploying, ensure you have:
 
 ---
 
-## **Deployment Instructions**
+## *Deployment Instructions*
 
 Run the following commands:
 
@@ -60,20 +60,20 @@ terraform init
 terraform validate
 terraform apply -auto-approve
 
-## **Terraform Outputs**
+## *Terraform outputs*
 
 After deployment, Terraform will output:
 
-- **Public Application URL**
-- **CloudWatch Dashboard URL**
-- **SNS Topic ARN**
-- **WAF WebACL ID and Name**
+- *Public Application URL*
+- *CloudWatch Dashboard URL*
+- *SNS Topic ARN**
+- *WAF WebACL ID and Name*
 
-**Important:** Confirm the SNS subscription email immediately after deployment. Without confirmation, alarms and the emergency response automation will not function.
+*Important:* Confirm the SNS subscription email immediately after deployment. Without confirmation, alarms and the emergency response automation will not function.
 
 ---
 
-## **Testing the DDoS Protection**
+## *Testing the DDoS Protection*
 
 - **Rate Limiting Test**
   - Navigate to your deployed website and use the built-in buttons:
@@ -81,7 +81,7 @@ After deployment, Terraform will output:
     - 500 requests
     - 2500 requests (should trigger rate limit blocks)
 
-- **Bot detection test**
+- *Bot detection test*
   - Run the following commands:
     ```bash
     curl -I https://YOUR-CLOUDFRONT-DOMAIN
@@ -89,7 +89,7 @@ After deployment, Terraform will output:
     ```
   - The second request should be blocked by the WAF bot rule.
 
-- **Emergency response test**
+- *Emergency response test*
   - After generating high request volume:
     - Wait 1–2 minutes
     - Open AWS WAF console
@@ -98,7 +98,7 @@ After deployment, Terraform will output:
 
 ---
 
-## **Troubleshooting**
+## *Troubleshooting*
 
 | Issue                   | Possible Cause                     | Solution                          |
 |-------------------------|----------------------------------|----------------------------------|
@@ -108,7 +108,7 @@ After deployment, Terraform will output:
 
 ---
 
-## **Cleanup (Avoid Unnecessary Charges)**
+## *Cleanup (Avoid Unnecessary Charges)*
 
 To delete all deployed resources:
 
