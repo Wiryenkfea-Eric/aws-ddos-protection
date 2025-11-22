@@ -1,4 +1,7 @@
-AWS DDoS Protection Demo
+<img width="1536" height="1024" alt="ChatGPT Image Nov 22, 2025, 04_52_40 AM" src="https://github.com/user-attachments/assets/59edb585-2fe4-4df8-969c-ce78b730e961" />
+
+
+*Enterprise-Grade DDoS Protection with Terraform and AWS*
 
 A fully automated, infrastructure-as-code setup for building, testing, and monitoring DDoS protection in AWS using Terraform.
 
@@ -8,6 +11,7 @@ It is designed as a hands-on learning lab and a template you can adapt to enterp
 
 
 What this project does
+
 ✔️ Creates a fully protected public website
 
 Amazon Linux 2023 EC2 instance
@@ -41,13 +45,8 @@ When CloudWatch detects a spike in blocked requests:
 → Lambda automatically lowers rate limit from 2000 → 100
 → Immediate defense tightening
 
-Architecture Overview
-
-<img width="1536" height="1024" alt="ChatGPT Image Nov 22, 2025, 04_52_40 AM" src="https://github.com/user-attachments/assets/52927250-1586-45db-93a2-48bf1637513d" />
 
 Prerequisites
-
-Before deploying:
 
 AWS Account
 
@@ -60,6 +59,7 @@ Git
 Verified SNS email subscription
 
 Deployment
+
 terraform init
 terraform validate
 terraform apply -auto-approve
@@ -106,13 +106,13 @@ Check WAF console → "RateLimit" rule
 You should see the new threshold: 100 requests / 5 minutes
 
 Troubleshooting
-Issue	Solution
-Website blank	Wait 1–2 mins for Apache install to finish
-No email received	Check spam; SNS sometimes delays initial confirmation
-Terraform fails	Ensure credentials are configured properly
-Requests not blocking	CloudFront cache may take 60 sec to propagate
+- Issue	Solution
+- Website blank	Wait 1–2 mins for Apache install to finish
+- No email received	Check spam; SNS sometimes delays initial confirmation
+- Terraform fails	Ensure credentials are configured properly
 
-Destroy All Resources (Avoid Charges)
+
+Destroy All Resources (Avoid charges)
 terraform destroy -auto-approve
 
 
